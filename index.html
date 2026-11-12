@@ -6,10 +6,19 @@
   <link rel="stylesheet" href="style.css">
   <script src="index.js" defer></script>
 </head>
+
+<div class="outils">
+<button id="bouton-theme">Mode sombre</button>
+<label for="curseur-taille">Taille du texte</label>
+<input type="range" id="curseur-taille" min="80" max="150" step="10" value="100">
+<span id="valeur-taille">100%</span>
+</div>
+
 <body>
   <header>
     <h1>Le poids caché du web</h1>
     <p>Page créée par Elouan Delorme - OC informatique - 2026</p>
+    <p id="salutation"></p>
   </header>
 
   <main>
@@ -56,14 +65,17 @@
       <li>écrire un code simple et propre</li>
     </ul>
     <p>Cette démarche s'appelle la sobriété numérique, ou <a href="https://fr.wikipedia.org/wiki/Informatique_durable">informatique durable (article Wikipédia)</a>.</p>
+  
+<section>
+  <h2>Combien pèse ma navigation ?</h2>
+  <p>Combien de pages web consultez-vous par jour, à peu près ?</p>
+  <input type="number" id="pages-par-jour" value="50">
+  <button id="bouton-calculer">Calculer</button>
+  <p id="resultat"></p>
+</section>
+  
+  
+  
   </main>
 </body>
-
-<div class="outils">
-<button id="bouton-theme">Mode sombre</button>
-<label for="curseur-taille">Taille du texte</label>
-<input type="range" id="curseur-taille" min="80" max="150" step="10" value="100">
-<span id="valeur-taille">100%</span>
-</div>
-
 </html>

@@ -22,3 +22,37 @@ curseur.addEventListener("input", function () {
   document.body.style.fontSize = curseur.value + "%";
   valeurTaille.textContent = curseur.value + "%";
 });
+
+
+const heure = new Date().getHours();
+const salutation = document.querySelector("#salutation");
+
+if (heure < 12) {
+  salutation.textContent = "Bonjour, bonne lecture !";
+} else if (heure < 18) {
+  salutation.textContent = "Bon après-midi, bonne lecture !";
+} else {
+  salutation.textContent = "Bonsoir, bonne lecture !";
+}
+
+
+const POIDS_PAGE_MO = 2;
+const champ = document.querySelector("#pages-par-jour");
+const resultat = document.querySelector("#resultat");
+
+document.querySelector("#bouton-calculer").addEventListener("click", function () {
+  const pages = Number(champ.value);
+  const goParAn = Math.round((pages * POIDS_PAGE_MO * 365) / 1000);
+
+  let message = "Environ " + goParAn + " Go par an. ";
+
+  if (goParAn < 15) {
+    message = message + "C'est une navigation très sobre !";
+  } else if (goParAn < 50) {
+    message = message + "Et ce ne sont que des pages : les vidéos pèsent beaucoup plus.";
+  } else {
+    message = message + "C'est beaucoup : pensez à limiter les pages lourdes.";
+  }
+
+  resultat.textContent = message;
+});

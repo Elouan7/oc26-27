@@ -112,3 +112,13 @@ color: #e2ebe9;
 .sombre h2 {
 color: #7fd1c3;
 }
+
+reponse.vert {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.reponse.rouge {
+  background-color: #c62828;
+  color: white;
+}

@@ -74,6 +74,16 @@ for (const bouton of reponses) {
   });
 }
 
+document.querySelector("#rejouer-quiz").addEventListener("click", function () {
+  score = 0;
+  document.querySelector("#score").textContent = "Score : 0";
+
+  for (const bouton of reponses) {
+    bouton.classList.remove("vert");
+    bouton.classList.remove("rouge");
+    bouton.disabled = false;
+  }
+});
 
 let temperature = 50;
 let tachesRestantes = 6;

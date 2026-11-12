@@ -73,3 +73,69 @@ for (const bouton of reponses) {
     bouton.disabled = true;
   });
 }
+
+
+let temperature = 50;
+let tachesRestantes = 6;
+
+const zoneJeu = document.querySelector("#zone-jeu");
+const affichageTemp = document.querySelector("#temperature");
+const messageJeu = document.querySelector("#message-jeu");
+const boutonsServeur = document.querySelectorAll(".action-serveur");
+
+function jouerAction(changement, bouton) {
+  temperature = temperature + changement;
+  tachesRestantes = tachesRestantes - 1;
+  affichageTemp.textContent = temperature;
+  bouton.disabled = true;
+
+  if (temperature >= 100) {
+    messageJeu.textContent = "Surchauffe ! Le datacenter a planté à " + temperature + " °C.";
+    zoneJeu.classList.add("surchauffe");
+    for (const b of boutonsServeur) {
+      b.disabled = true;
+    }
+  } else if (tachesRestantes === 0) {
+    messageJeu.textContent = "Bravo ! Toutes les tâches sont finies à " + temperature + " °C.";
+    zoneJeu.classList.add("victoire");
+  } else {
+    messageJeu.textContent = "Il reste " + tachesRestantes + " tâche(s) à exécuter.";
+  }
+}
+
+document.querySelector("#tache-1").addEventListener("click", function () {
+  jouerAction(30, document.querySelector("#tache-1"));
+});
+
+document.querySelector("#tache-2").addEventListener("click", function () {
+  jouerAction(25, document.querySelector("#tache-2"));
+});
+
+document.querySelector("#tache-3").addEventListener("click", function () {
+  jouerAction(20, document.querySelector("#tache-3"));
+});
+
+document.querySelector("#tache-4").addEventListener("click", function () {
+  jouerAction(-20, document.querySelector("#tache-4"));
+});
+
+document.querySelector("#tache-5").addEventListener("click", function () {
+  jouerAction(-15, document.querySelector("#tache-5"));
+});
+
+document.querySelector("#tache-6").addEventListener("click", function () {
+  jouerAction(-10, document.querySelector("#tache-6"));
+});
+
+document.querySelector("#bouton-rejouer").addEventListener("click", function () {
+  temperature = 50;
+  tachesRestantes = 6;
+  affichageTemp.textContent = temperature;
+  messageJeu.textContent = "Choisis une première action.";
+  zoneJeu.classList.remove("surchauffe");
+  zoneJeu.classList.remove("victoire");
+
+  for (const b of boutonsServeur) {
+    b.disabled = false;
+  }
+});
